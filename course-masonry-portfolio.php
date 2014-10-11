@@ -12,7 +12,7 @@
 	// get post options data
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
 	if ( get_post_meta( $post->ID, 'course_video_url', true ) )
-	$video_html = 1
+	$video_html = do_shortcode( '[course_featured_video course="' . $encoded . '" course_id="' . $post->ID . '"]' );
 	else
 	$video_html = '';
 	// post content type
@@ -29,7 +29,7 @@
 		$p_type = 'type-video';
 		$thumb['b_href'] = '#';
 		$vid_container = <<<HEREDOC
-		<div class="highslide-maincontent" data-width="{$data['video_width']}">{$video_html}</div>
+		<div class="highslide-maincontent" data-width="80%">{$video_html}</div>
 HEREDOC;
 	}
 	
@@ -43,7 +43,7 @@ HEREDOC;
 			<img src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 			</a>
 			
-			<?php if $video_html(echo do_shortcode( '[course_featured_video course="' . $encoded . '" course_id="' . $post->ID . '"]' )); ?>
+			<?php echo $vid_container ?>
 		</div>
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
 		<?php the_excerpt() ?>

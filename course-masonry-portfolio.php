@@ -37,7 +37,7 @@ HEREDOC;
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
 			<a href="<?php the_permalink() ?>" data-img="<?php echo $thumb['b_href'] ?>" title="<?php echo $thumb['caption']; ?>">
-			<img src="<?php echo get_post_meta( $course_id, 'featured_url', true ); ?>" />
+			<img src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 			</a>
 			
 			<?php echo $vid_container ?>

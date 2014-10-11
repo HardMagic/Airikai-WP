@@ -20,21 +20,14 @@
 			</div>
 			
 			<?php else: ?>
-			
 			<?php
 			$port_terms = get_post_meta( $post->ID, 'show_portf', true );
-			$args = array( 'post_type'	=>'course' );
+			$args = array( 'post_type'	=>'portfolio' );
 			
-
-/*			CATEGORIES FOR COURSES - COMING SOON
-			http://premium.wpmudev.org/forums/topic/feature-requests-for-coursepress-pro
-		
-
 			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
 				$args['posts_per_page'] = $port_terms['number_portf'];
 				unset($port_terms['number_portf']);
 			}
-
 			
 			if( $port_terms ) {
 				$args['tax_query'] = array(	
@@ -46,13 +39,8 @@
 											)
 										);
 			}
-*/
-
-	     
 			$temp = $wp_query;
 			$wp_query = new Wp_Query( $args );
-/*
-			RELATED TO CATEGORIES 
 			if( $wp_query->have_posts() ): 
 				echo dt_portf_tax_list(
 					array(
@@ -62,10 +50,7 @@
 						'ajax'		=>true
 					)
 				);
-*/
 			?>
-
-	
 				<div id="multicol" class="portfolio_massonry">
 					<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
 						<?php get_template_part('content-masonry', 'portfolio'); ?>

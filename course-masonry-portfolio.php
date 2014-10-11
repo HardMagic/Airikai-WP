@@ -11,7 +11,10 @@
 	}
 	// get post options data
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
-	$video_html = get_post_meta( $post->ID, 'course_video_url', true );
+	if ( get_post_meta( $post->ID, 'course_video_url', true ) )
+	$video_html = do_shortcode( '[course_featured_video course="' . $encoded . '" course_id="' . $post->ID . '"]' );
+	else
+	$video_html = '';
 	// post content type
 	$p_type = '';
 	$vid_container = '';

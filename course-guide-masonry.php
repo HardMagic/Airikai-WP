@@ -7,7 +7,7 @@
 	<?php get_template_part('mobile-menu') ?>
 	<div id="top_bg"></div>
 	<div id="holder">
-		<?php get_template_part('aside') ?>
+		<?php get_template_part('aside') ?>n
 		<div id="content">
 			<?php if( post_password_required() ): ?>
 			

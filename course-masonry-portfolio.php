@@ -11,8 +11,10 @@
 	}
 	// get post options data
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
-	if ( get_post_meta( $post->ID, 'course_video_url', true ) )
-	$video_html = do_shortcode( '[course_featured_video course="' . $encoded . '" course_id="' . $post->ID . '"]' );
+	if ( get_post_meta( $post->ID, 'course_video_url', true ) ){
+	$video_src = $video_src = get_post_meta( $post->ID, 'course_video_url', true );
+	$video_html = $content .= wp_oembed_get( $video_src);
+	}
 	else
 	$video_html = '';
 	// post content type

@@ -11,7 +11,7 @@
 	}
 	// get post options data
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
-	$video_html = isset( $data['video_html'] )?trim( $data['video_html'] ):'';
+	$video_html = isset( get_post_meta( $course_id, 'course_video_url', true ); ):'';
 	// post content type
 	$p_type = '';
 	$vid_container = '';

@@ -37,18 +37,13 @@ HEREDOC;
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
 			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-			<img width="240" src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
+			<img src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 			</a>
 			
 			<?php echo $vid_container ?>
 		</div>
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
 		<?php the_excerpt() ?>
-		<?php if( 1==2 && current_user_can('edit_posts')): // edit link?>
-			<a href="<?php echo get_edit_post_link($post->ID) ?>" class="button">
-				<span class="but-r"><span><i class="detail"></i><?php echo __( 'Edit', 'dt' ) ?></span></span>
-			</a>
-		<?php endif ?>
 		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE ) ?></span></span></a>       	
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>

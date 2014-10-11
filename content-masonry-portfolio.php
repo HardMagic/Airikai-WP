@@ -29,7 +29,6 @@ HEREDOC;
 	
 	$pass_class = post_password_required()?' dt-pass-protected':'';
 ?>
-test
 <div id="<?php echo $post->ID ?>" class="article_box<?php echo $category_class ?> isotope-item <?php echo esc_attr(get_post_time('U', true, $post->ID)); echo $pass_class; ?>">
 	<div class="article_t"></div>
 	<div class="article">

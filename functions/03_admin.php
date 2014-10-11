@@ -5,7 +5,7 @@
 add_filter('manage_edit-portfolio_columns', 'dt_columns', 5);
 // slider
 add_filter('manage_edit-main_slider_columns', 'dt_columns', 5);
-// benefits
+// benefits 
 add_filter('manage_edit-dt_gallery_columns', 'dt_columns', 5);
 
 // for portfolio and slider

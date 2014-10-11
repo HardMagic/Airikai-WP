@@ -11,7 +11,7 @@
 	}
 	// get post options data
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
-	if ( get_post_meta( $post->ID, 'course_video_url', true ) ){
+	if ( get_post_meta( $post->ID, 'course_video_url', true ) )
 	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
 	$video_html = wp_oembed_get( $video_src);
 	}
@@ -47,7 +47,7 @@ HEREDOC;
 			
 			<?php echo $vid_container ?>
 		</div>
-		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
+		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?>set</a></h4>
 		<?php the_excerpt() ?>
 		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE ) ?></span></span></a>       	
 	</div><!-- .article end -->

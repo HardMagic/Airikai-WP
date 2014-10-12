@@ -2,6 +2,7 @@
 /* template name: Course Masonry Portfolio */
 ?>
 <?php
+	$encoded = false;
 	$taxonomy = 'portfolio-category';
 	$category_class = ' course';
 	$term_ids = wp_get_object_terms( $post->ID, $taxonomy, array( 'fields' =>'ids' ));
@@ -52,7 +53,8 @@ HEREDOC;
 		</div>
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
 		<?php the_excerpt();
-		echo $content = do_shortcode( '[course_join_button course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
+		// echo $content = do_shortcode( '[course_join_button course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
+		echo $content = do_shortcode( '[course_cost course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
 		?>
 		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE ) ?></span></span></a>       	
 	</div><!-- .article end -->

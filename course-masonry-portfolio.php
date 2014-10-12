@@ -15,8 +15,8 @@
 	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
 	$video_html = wp_oembed_get($video_src);
 	// echo $video_html;
-//	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
-//	$video_html = '<iframe width="640" height="315" src="'. $video_src . '?feature=oembed&autoplay=1" frameborder="0" allowfullscreen></iframe>';
+	//	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
+	//	$video_html = '<iframe width="640" height="315" src="'. $video_src . '?feature=oembed&autoplay=1" frameborder="0" allowfullscreen></iframe>';
 	}
 	else
 	$video_html = '';
@@ -45,7 +45,7 @@ HEREDOC;
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
 			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-			<img src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
+			<img width="240" height="135" src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 			</a>
 			
 			<?php echo $vid_container ?>

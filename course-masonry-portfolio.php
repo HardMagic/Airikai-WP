@@ -14,7 +14,7 @@
 	if ( get_post_meta( $post->ID, 'course_video_url', true ) ){
 	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
 	$video_html = wp_oembed_get( $video_src);
-	echo $video_src;
+	echo $video_html;
 	}
 	else
 	$video_html = '';

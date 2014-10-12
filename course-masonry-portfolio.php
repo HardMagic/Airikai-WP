@@ -13,7 +13,13 @@
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
 	if ( get_post_meta( $post->ID, 'course_video_url', true ) ){
 	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
+	$video_html = wp_oembed_get($video_src);
+	// echo $video_html;
+	/*
+		https://www.youtube.com/watch?v=jkHI1hGvWRY
+	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
 	$video_html = '<iframe width="560" height="315" src="'. $video_src . '" frameborder="0" allowfullscreen></iframe>';
+	*/
 	}
 	else
 	$video_html = '';

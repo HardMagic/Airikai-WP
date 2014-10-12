@@ -54,8 +54,7 @@ HEREDOC;
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
 		<?php the_excerpt();
 		// echo $content = do_shortcode( '[course_join_button course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
-		echo $content = do_shortcode( '[course_cost course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
-		?>
+			?><span class="but-r"><?php echo $content = do_shortcode( '[course_cost course="' . $encoded . '" course_id="' .  $post->ID . '"]' );?></span>
 		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE ) ?></span></span></a>       	
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>

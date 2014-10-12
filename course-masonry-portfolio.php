@@ -34,7 +34,7 @@
 		$p_type = 'type-video';
 		$thumb['b_href'] = '#';
 		$vid_container = <<<HEREDOC
-		<div class="highslide-maincontent" data-width="80%">{$video_html}</div>
+		<div class="highslide-maincontent">{$video_html}</div>
 HEREDOC;
 	}
 	

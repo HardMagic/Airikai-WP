@@ -23,7 +23,7 @@
 			
 			<?php
 			$port_terms = get_post_meta( $post->ID, 'show_portf', true );
-			$args = array( 'post_type'	=>'certifications' );
+			$args = array( 'post_type'	=>'post' );
 			
 
 /*			CATEGORIES FOR COURSES - COMING SOON

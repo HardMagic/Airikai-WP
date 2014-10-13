@@ -3,7 +3,7 @@
 ?>
 <?php
 	$taxonomy = 'portfolio-category';
-	$category_class = '';
+	$category_class = ' certifications';
 	$term_ids = wp_get_object_terms( $post->ID, $taxonomy, array( 'fields' =>'ids' ));
 	foreach( $term_ids as $term_id){
 		$term = get_term( $term_id, $taxonomy );

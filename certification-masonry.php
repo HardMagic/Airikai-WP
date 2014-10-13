@@ -23,7 +23,7 @@
 			
 			<?php
 			$port_terms = get_post_meta( $post->ID, 'show_portf', true );
-			$args = array( 'post_type'	=>'course' );
+			$args = array( 'post_type'	=>'certifications' );
 			
 
 /*			CATEGORIES FOR COURSES - COMING SOON
@@ -68,7 +68,7 @@
 	
 				<div id="multicol" class="portfolio_massonry">
 					<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
-						<?php get_template_part('course-masonry', 'portfolio'); ?>
+						<?php get_template_part('certification-masonry', 'portfolio'); ?>
 					<?php endwhile ?>
 				</div>
 				<div id="nav-above" class="navigation portfolio _m">

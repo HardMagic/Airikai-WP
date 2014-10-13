@@ -1,5 +1,5 @@
 <?php 
-/* template name: Course Masonry Portfolio */
+/* template name: Certification Masonry Portfolio */
 ?>
 <?php
 	$encoded = false;
@@ -28,7 +28,7 @@
 	$thumb = dt_get_thumbnail( array(
 		'post_id'	=>$post->ID,
 		'width'		=>240,
-		'upscale'	=>false
+		'upscale'	=>true
 	) );
 			
 	if ( $video_html && !post_password_required() ) {

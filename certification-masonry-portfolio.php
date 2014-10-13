@@ -2,9 +2,8 @@
 /* template name: Certification Masonry Portfolio */
 ?>
 <?php
-	$encoded = false;
 	$taxonomy = 'portfolio-category';
-	$category_class = ' certifications';
+	$category_class = '';
 	$term_ids = wp_get_object_terms( $post->ID, $taxonomy, array( 'fields' =>'ids' ));
 	foreach( $term_ids as $term_id){
 		$term = get_term( $term_id, $taxonomy );
@@ -12,15 +11,7 @@
 	}
 	// get post options data
 	$data = get_post_meta( $post->ID, 'portfolio_options', true );
-	if ( get_post_meta( $post->ID, 'course_video_url', true ) ){
-	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
-	$video_html = wp_oembed_get($video_src);
-	// echo $video_html;
-	//	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
-	//	$video_html = '<iframe width="640" height="315" src="'. $video_src . '?feature=oembed&autoplay=1" frameborder="0" allowfullscreen></iframe>';
-	}
-	else
-	$video_html = '';
+	$video_html = isset( $data['video_html'] )?trim( $data['video_html'] ):'';
 	// post content type
 	$p_type = '';
 	$vid_container = '';
@@ -35,7 +26,7 @@
 		$p_type = 'type-video';
 		$thumb['b_href'] = '#';
 		$vid_container = <<<HEREDOC
-		<div class="highslide-maincontent">{$video_html}</div>
+		<div class="highslide-maincontent" data-width="{$data['video_width']}">{$video_html}</div>
 HEREDOC;
 	}
 	
@@ -45,18 +36,18 @@ HEREDOC;
 	<div class="article_t"></div>
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
-			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-			<img  <?php echo $thumb['size'][3] ?> src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
+			<a href="<?php the_permalink() ?>" data-img="<?php echo $thumb['b_href'] ?>" title="<?php echo $thumb['caption']; ?>">
+				<img <?php echo $thumb['size'][3] ?> src="<?php echo $thumb['t_href'] ?>" alt="<?php echo $thumb['alt'] ?>"/>
 			</a>
-			
 			<?php echo $vid_container ?>
 		</div>
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
-		<?php the_excerpt();
-		// echo $content = do_shortcode( '[course_join_button course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
-		echo $content = do_shortcode( '[course_cost course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
-		
-		?>
+		<?php the_excerpt() ?>
+		<?php if( current_user_can('edit_posts')): // edit link?>
+			<a href="<?php echo get_edit_post_link($post->ID) ?>" class="button">
+				<span class="but-r"><span><i class="detail"></i><?php echo __( 'Edit', 'dt' ) ?></span></span>
+			</a>
+		<?php endif ?>
 		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE ) ?></span></span></a>       	
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>

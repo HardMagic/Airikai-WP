@@ -62,7 +62,7 @@
 			else:
 			endif ?>
 			
-			<H3> HERE! </H3>
+			<div style="clear:both;"></div>
 			<?php
 			// DEGREE SECTION
 			

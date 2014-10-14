@@ -88,7 +88,9 @@
 			</div>
 			<?php
 			else:
-			endif
+			endif ?>
+			
+			<?php
 			
 			// END DEGREE SECTION
 			

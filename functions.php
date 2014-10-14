@@ -27,7 +27,7 @@ function create_post_type() {
     	'hierarchical' => true,
     	'menu_position' => 5,
     	'supports' => array('title','editor','thumbnail','excerpt'),
-        'taxonomies' => array('category')
+        'taxonomies' => array('category'),
     )
   );
 }

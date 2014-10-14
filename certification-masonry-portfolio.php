@@ -26,9 +26,8 @@
 			}
 			
 			$args = array(
-				'post_type'	=>'post',
+				'post_type'	=>'certification',
 				'paged'		=>$paged,
-				'category_name' => 'certifications'
 			);
 			
 			$data = get_post_meta( $post->ID, 'blog_posts_pp', true );
@@ -60,33 +59,7 @@
 			else:
 			endif
 		
-			// SEPARATE THE COLUMNS
-
-			$args = array(
-				'post_type'	=>'certification',
-				'paged'		=>$paged,
-			);
-			$wp_query = new Wp_Query( $args );
-			if( $wp_query->have_posts() ): ?>
-			<div class="multicol">
-				<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
-					<?php
-					if( !post_password_required() )
-						get_template_part('certification-masonry', get_post_format());
-					else
-						get_template_part('certification-masonry');
-					?>
-				<?php endwhile ?>
-			</div>
-			<div id="nav-above" class="navigation blog">
-				<?php 
-				 if( function_exists('wp_pagenavi') ) wp_pagenavi();
-				 else wp_link_pages();
-				?>
-			</div>
-			<?php else:?>
-			<?php endif ?>
-			
+			?>
 			
 			<?php $wp_query = $temp; ?>
 			<?php endif;// password protectection ?>

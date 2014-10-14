@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Certification - masonry*/
+/* Template Name: Certification - Masonry */
 ?>
 <?php get_header() ?>
 <div id="bg">
@@ -63,9 +63,8 @@
 			// SEPARATE THE COLUMNS
 
 			$args = array(
-				'post_type'	=>'post',
+				'post_type'	=>'certification',
 				'paged'		=>$paged,
-				'category_name' => 'certifications'
 			);
 			$wp_query = new Wp_Query( $args );
 			if( $wp_query->have_posts() ): ?>

@@ -31,3 +31,28 @@ function create_post_type() {
     )
   );
 }
+
+function certification_division() {
+	// create a new taxonomy
+	register_taxonomy(
+		'certification_division',
+		'certification',
+		array(
+		    'labels' => array(
+                'name' => 'Division',
+                'add_new_item' => 'Add New Divison',
+                'new_item_name' => "New Division of Certifications"
+            ),
+			'rewrite' => array( 'slug' => 'division' ),
+			'hierarchical'      => true,
+    		'show_ui'           => true,
+    		'show_admin_column' => true,
+    		'query_var'         => true,
+			'capabilities' => array(
+				'assign_terms' => 'edit_guides',
+				'edit_terms' => 'publish_guides'
+			)
+		)
+	);
+}
+add_action( 'init', 'certification_division' );

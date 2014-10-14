@@ -27,7 +27,6 @@ function create_post_type() {
     	'hierarchical' => true,
     	'menu_position' => 5,
     	'supports' => array('title','editor','thumbnail','excerpt'),
-        'taxonomies' => array('category'),
     )
   );
 }
@@ -39,7 +38,7 @@ function certification_division() {
 		'certification',
 		array(
 		    'labels' => array(
-                'name' => 'Division',
+                'name' => 'Divisions',
                 'add_new_item' => 'Add New Divison',
                 'new_item_name' => "New Division of Certifications"
             ),

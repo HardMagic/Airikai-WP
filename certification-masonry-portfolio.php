@@ -50,6 +50,25 @@
 					?>
 				<?php endwhile ?>
 			</div>
+			<div id="nav-above" class="navigation blog">
+				<?php 
+				 if( function_exists('wp_pagenavi') ) wp_pagenavi();
+				 else wp_link_pages();
+				?>
+			</div>
+			<?php
+			else:
+			endif
+		
+			// SEPARATE THE COLUMNS
+
+			$args = array(
+				'post_type'	=>'post',
+				'paged'		=>$paged,
+				'category_name' => 'certifications'
+			);
+			$wp_query = new Wp_Query( $args );
+			if( $wp_query->have_posts() ): ?>
 			<div class="multicol">
 				<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
 					<?php
@@ -68,6 +87,8 @@
 			</div>
 			<?php else:?>
 			<?php endif ?>
+			
+			
 			<?php $wp_query = $temp; ?>
 			<?php endif;// password protectection ?>
 		</div>

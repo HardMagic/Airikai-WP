@@ -29,7 +29,7 @@
 				'post_type'	=>'certification',
 				'paged'		=>$paged,
 				'certification_division' => 'certification',
-				'order' => 'DESC',
+				'order' => 'ASC',
 			);
 			
 			$data = get_post_meta( $post->ID, 'blog_posts_pp', true );
@@ -62,14 +62,15 @@
 			else:
 			endif ?>
 			
+			<H3> HERE! </H3>
 			<?php
 			// DEGREE SECTION
 			
 			$args = array(
 				'post_type'	=>'certification',
 				'paged'		=>$paged,
-				'certification_division' => 'degree',
-				'order' => 'DESC',
+				'certification_division' => 'degrees',
+				'order' => 'ASC',
 			);
 			
 				$temp = $wp_query;

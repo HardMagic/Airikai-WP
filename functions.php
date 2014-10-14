@@ -14,8 +14,19 @@ function create_post_type() {
         'name' => __( 'Certifications' ),
         'singular_name' => __( 'certification' )
       ),
-      'public' => true,
-      'has_archive' => false,
+        'public' => true,
+        'has_archive' => false,
+    	'publicly_queryable' => true,
+    	'show_ui' => true,
+    	'query_var' => true,
+    	'menu_icon' => '',
+    	'rewrite' => true,
+    	'capability_type' => 'post',
+    	'hierarchical' => true,
+    	'menu_position' => 5,
+    	'supports' => array('title','editor','thumbnail','excerpt'),
+                'taxonomies' => array('category')
+	  );
     )
   );
 }

@@ -29,6 +29,7 @@
 				'post_type'	=>'certification',
 				'paged'		=>$paged,
 				'certification_division' => 'certification',
+				'order' => 'DESC',
 			);
 			
 			$data = get_post_meta( $post->ID, 'blog_posts_pp', true );
@@ -56,13 +57,42 @@
 				 else wp_link_pages();
 				?>
 			</div>
+			<br><br>
 			<?php
 			else:
 			endif
-		
-			?>
 			
-			<?php $wp_query = $temp; ?>
+			// DEGREE SECTION
+			
+			$args = array(
+				'post_type'	=>'certification',
+				'paged'		=>$paged,
+				'certification_division' => 'degree',
+				'order' => 'DESC',
+			);
+			
+				$temp = $wp_query;
+			$wp_query = new Wp_Query( $args );
+			?>
+			<?php if( $wp_query->have_posts() ): ?>
+			<div class="multicol">
+				<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
+					<?php
+					if( !post_password_required() )
+						get_template_part('certification-masonry', get_post_format());
+					else
+						get_template_part('certification-masonry');
+					?>
+				<?php endwhile ?>
+			</div>
+			<?php
+			else:
+			endif
+			
+			// END DEGREE SECTION
+			
+			
+			 $wp_query = $temp; ?>
 			<?php endif;// password protectection ?>
 		</div>
 	</div>

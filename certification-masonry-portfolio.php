@@ -28,6 +28,7 @@
 			$args = array(
 				'post_type'	=>'certification',
 				'paged'		=>$paged,
+				'category_name' => 'certification',
 			);
 			
 			$data = get_post_meta( $post->ID, 'blog_posts_pp', true );

@@ -16,6 +16,8 @@ function create_post_type() {
       ),
         'public' => true,
         'has_archive' => false,
+        'public' => true,
+        'has_archive' => false,
     	'publicly_queryable' => true,
     	'show_ui' => true,
     	'query_var' => true,
@@ -25,8 +27,7 @@ function create_post_type() {
     	'hierarchical' => true,
     	'menu_position' => 5,
     	'supports' => array('title','editor','thumbnail','excerpt'),
-                'taxonomies' => array('category')
-	  );
+        'taxonomies' => array('category')
     )
   );
 }

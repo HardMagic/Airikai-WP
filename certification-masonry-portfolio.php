@@ -60,8 +60,9 @@
 			<br><br>
 			<?php
 			else:
-			endif
+			endif ?>
 			
+			<?php
 			// DEGREE SECTION
 			
 			$args = array(

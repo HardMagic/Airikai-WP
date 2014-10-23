@@ -1,8 +1,7 @@
 <?php
 $t_flag = has_post_thumbnail($post->ID);
 ?>
-<div style="margin: 50px 0px;">
-<div class="article_box">
+<div id="<?php echo $post->ID ?>" class="article_box<?php echo $category_class ?> isotope-item <?php echo esc_attr(get_post_time('U', true, $post->ID)); echo $pass_class; ?>">
 	<div class="article">
 		<?php if( $t_flag && !post_password_required() ): // post featuredimage ?>
 			<div class="img-holder n-s">
@@ -79,4 +78,4 @@ $t_flag = has_post_thumbnail($post->ID);
 		<?php endif; ?>
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>
-</div></div>
+</div>

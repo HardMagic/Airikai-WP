@@ -28,7 +28,7 @@
 	$thumb = dt_get_thumbnail( array(
 		'post_id'	=>$post->ID,
 		'width'		=>240,
-		'upscale'	=>false
+		'upscale'	=>true
 	) );
 			
 	if ( $video_html && !post_password_required() ) {

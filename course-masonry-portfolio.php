@@ -1,7 +1,7 @@
 <?php
 $t_flag = has_post_thumbnail($post->ID);
 ?>
-<div style="padding: 10px 0px">
+<div style="margin: 20px 0px">
 <div class="article_box">
 	<div class="article">
 		<?php if( $t_flag && !post_password_required() ): // post featuredimage ?>

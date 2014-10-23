@@ -1,5 +1,5 @@
 <?php 
-/* Template Name: Portfolio - masonry - Courses*/
+/* Template Name: Portfolio - Masonry - Courses*/
 ?>
 <?php get_header() ?>
 <div id="bg">

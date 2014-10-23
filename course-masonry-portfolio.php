@@ -1,63 +1,81 @@
-<?php 
-/* template name: Course Masonry Portfolio */
-?>
 <?php
-	$encoded = false;
-	$taxonomy = 'portfolio-category';
-	$category_class = ' course';
-	$term_ids = wp_get_object_terms( $post->ID, $taxonomy, array( 'fields' =>'ids' ));
-	foreach( $term_ids as $term_id){
-		$term = get_term( $term_id, $taxonomy );
-		$category_class .= ' '. $term->slug;	
-	}
-	// get post options data
-	$data = get_post_meta( $post->ID, 'portfolio_options', true );
-	if ( get_post_meta( $post->ID, 'course_video_url', true ) ){
-	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
-	$video_html = wp_oembed_get($video_src);
-	// echo $video_html;
-	//	$video_src = get_post_meta( $post->ID, 'course_video_url', true );
-	//	$video_html = '<iframe width="640" height="315" src="'. $video_src . '?feature=oembed&autoplay=1" frameborder="0" allowfullscreen></iframe>';
-	}
-	else
-	$video_html = '';
-	// post content type
-	$p_type = '';
-	$vid_container = '';
-
-	$thumb = dt_get_thumbnail( array(
-		'post_id'	=>$post->ID,
-		'width'		=>240,
-		'upscale'	=>false
-	) );
-			
-	if ( $video_html && !post_password_required() ) {
-		$p_type = 'type-video';
-		$thumb['b_href'] = '#';
-		$vid_container = <<<HEREDOC
-		<div class="highslide-maincontent">{$video_html}</div>
-HEREDOC;
-	}
-	
-	$pass_class = post_password_required()?' dt-pass-protected':'';
+$t_flag = has_post_thumbnail($post->ID);
 ?>
-<div id="<?php echo $post->ID ?>" class="article_box<?php echo $category_class ?> isotope-item <?php echo esc_attr(get_post_time('U', true, $post->ID)); echo $pass_class; ?>">
-	<div class="article_t"></div>
+<div class="article_box">
 	<div class="article">
-		<div class="img-holder n-s ro <?php echo $p_type ?>">
-			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-			<img  <?php echo $thumb['size'][3] ?> src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
-			</a>
-			
-			<?php echo $vid_container ?>
-		</div>
+		<?php if( $t_flag && !post_password_required() ): // post featuredimage ?>
+			<div class="img-holder n-s">
+				<?php
+				$args = array(	'post_id'	=>$post->ID,
+								'width'		=>240,
+								'upscale'	=>true
+								);
+				$thumb = dt_get_thumbnail( $args );
+				?>
+				<a href="<?php the_permalink() ?>" title="<?php echo $thumb['caption'] ?>" data-img="<?php echo $thumb['b_href'] ?>">	
+					<img <?php echo $thumb['size'][3] ?> src="<?php echo $thumb['t_href'] ?>" alt="<?php echo $thumb['alt'] ?>"/>
+				</a>
+			</div>
+		<?php endif ?>
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
-		<?php the_excerpt();
-		// echo $content = do_shortcode( '[course_join_button course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
-		echo $content = do_shortcode( '[course_cost course="' . $encoded . '" course_id="' .  $post->ID . '"]' );
-		
+		<?php 
+		the_excerpt();
+		wp_link_pages();
 		?>
-		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE ) ?></span></span></a>       	
+		<?php if( current_user_can('edit_posts')): // edit link?>
+			<a href="<?php echo get_edit_post_link($post->ID) ?>" class="button">
+				<span class="but-r"><span><i class="detail"></i><?php echo __( 'Edit', LANGUAGE_ZONE ) ?></span></span>
+			</a>
+		<?php endif ?>
+		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE) ?></span></span></a>       
+		
+		<?php if( !post_password_required() ): ?>
+		<div class="meta">
+			<div class="ico-l d">   
+				<a href="#" class="ico_link date"></a>
+				<div class="info-block">
+					<span class="grey"><?php _e( 'Published on:', LANGUAGE_ZONE ) ?></span><br/>
+					<a href="<?php the_permalink() ?>"><?php the_time(get_option('date_format'). ' '. get_option('time_format') ) ?></a>
+				</div>
+			</div>           
+			
+			<div class="ico-l">
+				<span class="ico_link author"></span>
+				<div class="info-block">
+					<span class="grey"><?php echo __( 'Author:', LANGUAGE_ZONE ) ?></span><br />                 
+					<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ) ?>">
+						<?php echo get_the_author() ?>
+					</a>
+				</div>
+			</div>
+			
+			<?php // category
+			 $categories = get_the_category_list( __( ', ', 'dt' ) );
+			 if( $categories ):
+			?>
+				<div class="ico-l">
+					<span class="ico_link categories"></span>
+					<div class="info-block">
+						<span class="grey"><?php echo __( 'Categories:', 'dt' ) ?></span><br />					
+						<?php echo $categories ?>
+					</div>
+				</div>
+			<?php endif ?>
+			
+			<?php //tags
+			 $tags = get_the_tag_list( '', __( ', ', 'dt' ) );
+			 if( $tags ):			
+			?>
+				<div class="ico-l">
+					<span class="ico_link tags"></span>
+					<div class="info-block">
+						<span class="grey"><?php echo __( 'Tags:', 'dt' ) ?></span><br />                 
+						<?php echo $tags ?>
+					</div>
+				</div>
+			<?php endif ?>
+		</div><!-- meta end -->
+		<?php endif; ?>
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>
 </div>

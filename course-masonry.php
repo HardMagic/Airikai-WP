@@ -66,7 +66,7 @@
 			?>
 
 	
-				<div id="multicol" class="portfolio_massonry">
+				<div id="multicol">
 					<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
 						<?php get_template_part('course-masonry', 'portfolio'); ?>
 					<?php endwhile ?>

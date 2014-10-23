@@ -45,8 +45,8 @@ HEREDOC;
 	<div class="article_t"></div>
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
-			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-			<img width="240" src="http://airikai.com/wp-content/uploads/sites/3/2014/10/michelle_kick_1080.jpg" />
+			<a href="<?php the_permalink() ?>" data-img="<?php echo $thumb['b_href'] ?>" title="<?php echo $thumb['caption']; ?>">
+			<img  <?php echo $thumb['size'][3] ?> src="<?php echo $thumb['t_href'] ?>" alt="<?php echo $thumb['alt'] ?>" />
 			</a>
 			
 			<?php echo $vid_container ?>

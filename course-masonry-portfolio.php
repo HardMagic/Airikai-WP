@@ -1,7 +1,7 @@
 <?php
 $t_flag = has_post_thumbnail($post->ID);
 ?>
-<div id="<?php echo $post->ID ?>" style="margin: 50px 0px; class="article_box illustration isotope-item <?php echo esc_attr(get_post_time('U', true, $post->ID)); echo $pass_class; ?>">
+<div id="<?php echo $post->ID ?>" style="margin: 50px 0px;" class="article_box illustration isotope-item <?php echo esc_attr(get_post_time('U', true, $post->ID)); echo $pass_class; ?>">
 	<div class="article">
 		<?php if( $t_flag && !post_password_required() ): // post featuredimage ?>
 			<div class="img-holder n-s">

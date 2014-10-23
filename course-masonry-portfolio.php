@@ -28,7 +28,7 @@
 	$thumb = dt_get_thumbnail( array(
 		'post_id'	=>$post->ID,
 		'width'		=>240,
-		'upscale'	=>true
+		'upscale'	=>false
 	) );
 			
 	if ( $video_html && !post_password_required() ) {
@@ -45,8 +45,8 @@ HEREDOC;
 	<div class="article_t"></div>
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
-			<a href="<?php the_permalink() ?>" data-img="<?php echo $thumb['b_href'] ?>" title="<?php echo $thumb['caption']; ?>">
-			<img  <?php echo $thumb['size'][3] ?> src="<?php echo $thumb['t_href'] ?>" alt="<?php echo $thumb['alt'] ?>" />
+			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
+			<img  <?php echo $thumb['size'][3] ?> src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 			</a>
 			
 			<?php echo $vid_container ?>

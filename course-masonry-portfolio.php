@@ -1,6 +1,7 @@
 <?php
 $t_flag = has_post_thumbnail($post->ID);
 ?>
+<div style="padding: 10px 0px">
 <div class="article_box">
 	<div class="article">
 		<?php if( $t_flag && !post_password_required() ): // post featuredimage ?>
@@ -78,4 +79,4 @@ $t_flag = has_post_thumbnail($post->ID);
 		<?php endif; ?>
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>
-</div>
+</div></div>

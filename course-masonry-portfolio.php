@@ -46,7 +46,7 @@ HEREDOC;
 	<div class="article">
 		<div class="img-holder n-s ro <?php echo $p_type ?>">
 			<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-			<img  <?php echo $thumb['size'][3] ?> src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
+			<img width="240" src="http://airikai.com/wp-content/uploads/sites/3/2014/10/michelle_kick_1080.jpg" />
 			</a>
 			
 			<?php echo $vid_container ?>

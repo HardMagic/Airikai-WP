@@ -13,7 +13,7 @@ $t_flag = has_post_thumbnail($post->ID);
 				$thumb = dt_get_thumbnail( $args );
 				?>
 				<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-				<img  width="240px" height="130px" src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
+				<img  width="240" height="130" src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 				</a>
 			</div>
 		<?php endif ?>

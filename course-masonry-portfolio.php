@@ -12,8 +12,8 @@ $t_flag = has_post_thumbnail($post->ID);
 								);
 				$thumb = dt_get_thumbnail( $args );
 				?>
-				<a href="<?php the_permalink() ?>" title="<?php echo $thumb['caption'] ?>" data-img="<?php echo $thumb['b_href'] ?>">	
-					<img <?php echo $thumb['size'][3] ?> src="<?php echo $thumb['t_href'] ?>" alt="<?php echo $thumb['alt'] ?>"/>
+				<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
+				<img  <?php echo $thumb['size'][3] ?> src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
 				</a>
 			</div>
 		<?php endif ?>

@@ -53,12 +53,4 @@
 <?php get_footer( 'shop' ); ?>
 
 
-get_header( 'shop' ); ?>
-
-<div id="bg">
-<div class="grid-container">		
-        	
-            <?php $grid = is_active_sidebar('blog-widget-area') ? 'grid-75 tablet-grid-75 mobile-grid-100' : 'grid-100 tablet-grid-100 mobile-grid-100'; ?>
-            
-            <div id="primary" class="grid-parent <?php echo $grid; ?>">
     

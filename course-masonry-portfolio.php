@@ -20,6 +20,7 @@ $t_flag = has_post_thumbnail($post->ID);
 		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
 		<?php 
 		the_excerpt();
+		printf( '<pre>%s</pre>', var_export( get_post_custom( get_the_ID() ), true ) );
 		wp_link_pages();
 		?>
 		<?php if( current_user_can('edit_posts')): // edit link?>

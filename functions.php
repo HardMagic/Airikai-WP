@@ -28,7 +28,28 @@ function create_post_type() {
     	'supports' => array('title','editor','thumbnail','excerpt', 'post-formats'),
     )
   );
+  
+  register_post_type( 'course',
+    array(
+      'labels' => array(
+        'name' => __( 'courses' ),
+        'singular_name' => __( 'course' )
+      ),
+        'public' => true,
+        'has_archive' => false,
+    	'publicly_queryable' => true,
+    	'show_ui' => true,
+    	'query_var' => true,
+    	'menu_icon' => '',
+    	'rewrite' => true,
+    	'capability_type' => 'post',
+    	'hierarchical' => true,
+    	'menu_position' => 5,
+    	'supports' => array('title','editor','thumbnail','excerpt', 'post-formats'),
+    )
+  );
 }
+
 
 function certification_division() {
 	// create a new taxonomy
@@ -56,31 +77,6 @@ function certification_division() {
 
 
 
-add_action( 'init', 'course_division' );
-
-add_action( 'init', 'create_post_type' );
-function create_post_type() {
-  register_post_type( 'course',
-    array(
-      'labels' => array(
-        'name' => __( 'courses' ),
-        'singular_name' => __( 'course' )
-      ),
-        'public' => true,
-        'has_archive' => false,
-    	'publicly_queryable' => true,
-    	'show_ui' => true,
-    	'query_var' => true,
-    	'menu_icon' => '',
-    	'rewrite' => true,
-    	'capability_type' => 'post',
-    	'hierarchical' => true,
-    	'menu_position' => 5,
-    	'supports' => array('title','editor','thumbnail','excerpt', 'post-formats'),
-    )
-  );
-}
-
 function course_division() {
 	// create a new taxonomy
 	register_taxonomy(
@@ -105,3 +101,5 @@ function course_division() {
 	);
 }
 add_action( 'init', 'course_division' );
+
+add_action( 'init', 'certification_division' );

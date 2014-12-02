@@ -13,7 +13,7 @@ $t_flag = has_post_thumbnail($post->ID);
 				$thumb = dt_get_thumbnail( $args );
 				?>
 				<a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-				<img width="240" height="250" src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' ); ?>" />
+				<img width="240" height="250" src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>" />
 				</a>
 			</div>
 		<?php endif ?>
@@ -29,36 +29,6 @@ $t_flag = has_post_thumbnail($post->ID);
 		<?php endif ?>
 		<a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>?action=curriculum" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Curriculum', LANGUAGE_ZONE) ?></span></span></a>       
 		
-		<?php if( !post_password_required() ): ?>
-		<div class="meta">
-			
-			<?php // category
-			 $categories = get_the_category_list( __( ', ', 'dt' ) );
-			 if( $categories ):
-			?>
-				<div class="ico-l">
-					<span class="ico_link categories"></span>
-					<div class="info-block">
-						<span class="grey"><?php echo __( 'Categories:', 'dt' ) ?></span><br />					
-						<?php echo $categories ?>
-					</div>
-				</div>
-			<?php endif ?>
-			
-			<?php //tags
-			 $tags = get_the_tag_list( '', __( ', ', 'dt' ) );
-			 if( $tags ):			
-			?>
-				<div class="ico-l">
-					<span class="ico_link tags"></span>
-					<div class="info-block">
-						<span class="grey"><?php echo __( 'Tags:', 'dt' ) ?></span><br />                 
-						<?php echo $tags ?>
-					</div>
-				</div>
-			<?php endif ?>
-		</div><!-- meta end -->
-		<?php endif; ?>
 	</div><!-- .article end -->
 	<div class="article_footer_b"></div>
 </div>

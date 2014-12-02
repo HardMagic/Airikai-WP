@@ -32,8 +32,8 @@ function create_post_type() {
   register_post_type( 'course',
     array(
       'labels' => array(
-        'name' => __( 'courses' ),
-        'singular_name' => __( 'course' )
+        'name' => __( 'Courses' ),
+        'singular_name' => __( 'Course' )
       ),
         'public' => true,
         'has_archive' => false,

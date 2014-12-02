@@ -139,7 +139,7 @@ function themov_course_id_meta_box_callback( $post ) {
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
 	 */
-	$value = get_post_meta( $post->ID, '_my_meta_value_key', true );
+	$value = get_post_meta( $post->ID, 'themov_link', true );
 
 	echo '<label for="themov_course_id_new_field">';
 	_e( 'Course Link on TheMOV', 'themov_course_id_textdomain' );
@@ -199,6 +199,6 @@ function themov_course_id_save_meta_box_data( $post_id ) {
 	$my_data = sanitize_text_field( $_POST['themov_course_id_new_field'] );
 
 	// Update the meta field in the database.
-	update_post_meta( $post_id, '_my_meta_value_key', $my_data );
+	update_post_meta( $post_id, 'themov_link', $my_data );
 }
 add_action( 'save_post', 'themov_course_id_save_meta_box_data' );

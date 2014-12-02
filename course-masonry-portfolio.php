@@ -28,7 +28,7 @@ $t_flag = has_post_thumbnail($post->ID);
 				<span class="but-r"><span><i class="detail"></i><?php echo __( 'Edit', LANGUAGE_ZONE ) ?></span></span>
 			</a>
 		<?php endif ?>
-		<a href="<?php echo get_post_meta( $post->ID, 'themov_course_id_meta_box', true ); ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Curriculum', LANGUAGE_ZONE) ?></span></span></a>       
+		<a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Curriculum', LANGUAGE_ZONE) ?></span></span></a>       
 		
 		<?php if( !post_password_required() ): ?>
 		<div class="meta">

@@ -12,15 +12,14 @@ $t_flag = has_post_thumbnail($post->ID);
 								);
 				$thumb = dt_get_thumbnail( $args );
 				?>
-				<a href="<?php the_permalink() ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
-				<img  width="240" height="250" src="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" />
+				<a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>" data-img="<?php echo get_post_meta( $post->ID, 'featured_url', true ); ?>" title="<?php echo $thumb['caption']; ?>">
+				<img width="240" height="250" src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' ); ?>" />
 				</a>
 			</div>
 		<?php endif ?>
-		<h4 class="entry-title _cf"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
+		<h4 class="entry-title _cf"><a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>"><?php the_title() ?></a></h4>
 		<?php 
 		the_excerpt();
-		printf( '<pre>%s</pre>', var_export( get_post_custom( get_the_ID() ), true ) );
 		wp_link_pages();
 		?>
 		<?php if( current_user_can('edit_posts')): // edit link?>
@@ -28,7 +27,7 @@ $t_flag = has_post_thumbnail($post->ID);
 				<span class="but-r"><span><i class="detail"></i><?php echo __( 'Edit', LANGUAGE_ZONE ) ?></span></span>
 			</a>
 		<?php endif ?>
-		<a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Curriculum', LANGUAGE_ZONE) ?></span></span></a>       
+		<a href="<?php echo get_post_meta( $post->ID, 'themov_link', true ); ?>?action=curriculum" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Curriculum', LANGUAGE_ZONE) ?></span></span></a>       
 		
 		<?php if( !post_password_required() ): ?>
 		<div class="meta">

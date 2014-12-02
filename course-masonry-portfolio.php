@@ -27,27 +27,10 @@ $t_flag = has_post_thumbnail($post->ID);
 				<span class="but-r"><span><i class="detail"></i><?php echo __( 'Edit', LANGUAGE_ZONE ) ?></span></span>
 			</a>
 		<?php endif ?>
-		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Details', LANGUAGE_ZONE) ?></span></span></a>       
+		<a href="<?php the_permalink() ?>" class="button"><span class="but-r"><span><i class="detail"></i><?php _e( 'Curriculum', LANGUAGE_ZONE) ?></span></span></a>       
 		
 		<?php if( !post_password_required() ): ?>
 		<div class="meta">
-			<div class="ico-l d">   
-				<a href="#" class="ico_link date"></a>
-				<div class="info-block">
-					<span class="grey"><?php _e( 'Published on:', LANGUAGE_ZONE ) ?></span><br/>
-					<a href="<?php the_permalink() ?>"><?php the_time(get_option('date_format'). ' '. get_option('time_format') ) ?></a>
-				</div>
-			</div>           
-			
-			<div class="ico-l">
-				<span class="ico_link author"></span>
-				<div class="info-block">
-					<span class="grey"><?php echo __( 'Author:', LANGUAGE_ZONE ) ?></span><br />                 
-					<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ) ?>">
-						<?php echo get_the_author() ?>
-					</a>
-				</div>
-			</div>
 			
 			<?php // category
 			 $categories = get_the_category_list( __( ', ', 'dt' ) );

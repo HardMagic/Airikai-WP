@@ -117,7 +117,7 @@ function themov_course_id_add_meta_box() {
 
 		add_meta_box(
 			'themov_course_id_sectionid',
-			__( 'Course ID', 'themov_course_id_textdomain' ),
+			__( 'My Post Section Title', 'themov_course_id_textdomain' ),
 			'themov_course_id_meta_box_callback',
 			$screen
 		);
@@ -128,7 +128,7 @@ add_action( 'add_meta_boxes', 'themov_course_id_add_meta_box' );
 /**
  * Prints the box content.
  * 
- * @param WP_Post $post The object for the current course.
+ * @param WP_Post $post The object for the current post/page.
  */
 function themov_course_id_meta_box_callback( $post ) {
 
@@ -141,10 +141,10 @@ function themov_course_id_meta_box_callback( $post ) {
 	 */
 	$value = get_post_meta( $post->ID, '_my_meta_value_key', true );
 
-	echo '<label for="themov_course_id">';
-	_e( 'Course ID on TheMOV', 'themov_course_id_textdomain' );
+	echo '<label for="themov_course_id_new_field">';
+	_e( 'Description for this field', 'themov_course_id_textdomain' );
 	echo '</label> ';
-	echo '<input type="text" id="themov_course_id" name="themov_course_id" value="' . esc_attr( $value ) . '" size="25" />';
+	echo '<input type="text" id="themov_course_id_new_field" name="themov_course_id_new_field" value="' . esc_attr( $value ) . '" size="25" />';
 }
 
 /**

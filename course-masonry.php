@@ -9,30 +9,14 @@
 	<div id="holder">
 		<?php get_template_part('aside') ?>
 		<div id="content">
-			<?php if( post_password_required() ): ?>
-			
-			<div class="article_box p">
-				<div class="article_t"></div>
-				<div class="article b">
-					<?php echo get_the_password_form(); ?>
-				</div><!-- .article b end -->
-				<div class="article_b"></div>
-			</div>
-			
-			<?php else: ?>
-			
 			<?php
-			$port_terms = get_post_meta( $post->ID, 'show_portf', true );
+			$port_terms = get_post_meta( $post->ID, 'division', true );
 			$args = array( 'post_type'	=>'course' );
 			
 
-/*			CATEGORIES FOR COURSES - COMING SOON
-			http://premium.wpmudev.org/forums/topic/feature-requests-for-coursepress-pro
-		
-
-			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
-				$args['posts_per_page'] = $port_terms['number_portf'];
-				unset($port_terms['number_portf']);
+			if( isset($port_terms['division']) && $port_terms['division'] ) {
+				$args['posts_per_page'] = $port_terms['division'];
+				unset($port_terms['division']);
 			}
 
 			
@@ -46,12 +30,12 @@
 											)
 										);
 			}
-*/
+
 
 	     
 			$temp = $wp_query;
 			$wp_query = new Wp_Query( $args );
-/*
+
 			RELATED TO CATEGORIES 
 			if( $wp_query->have_posts() ): 
 				echo dt_portf_tax_list(
@@ -62,7 +46,7 @@
 						'ajax'		=>true
 					)
 				);
-*/
+
 			?>
 
 	
@@ -77,10 +61,7 @@
 					else wp_link_pages();
 					?>
 				</div>
-			<?php // else:?>
-			<?php // endif ?>
 			<?php $wp_query = $temp; ?>
-			<?php endif;// password protectection ?>
 		</div>
 	</div>
 </div>

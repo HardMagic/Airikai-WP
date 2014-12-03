@@ -26,6 +26,10 @@
 			$args = array( 'post_type'	=>'course' );
 			
 
+/*			CATEGORIES FOR COURSES - COMING SOON
+			http://premium.wpmudev.org/forums/topic/feature-requests-for-coursepress-pro
+		
+
 			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
 				$args['posts_per_page'] = $port_terms['number_portf'];
 				unset($port_terms['number_portf']);
@@ -42,12 +46,12 @@
 											)
 										);
 			}
-
+*/
 
 	     
 			$temp = $wp_query;
 			$wp_query = new Wp_Query( $args );
-/*
+
 			RELATED TO CATEGORIES 
 			if( $wp_query->have_posts() ): 
 				echo dt_portf_tax_list(
@@ -60,7 +64,7 @@
 				);
 
 			?>
-*/
+
 	
 				<div id="multicol">
 					<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>

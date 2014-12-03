@@ -26,10 +26,6 @@
 			$args = array( 'post_type'	=>'course' );
 			
 
-/*			CATEGORIES FOR COURSES - COMING SOON
-			http://premium.wpmudev.org/forums/topic/feature-requests-for-coursepress-pro
-		
-
 			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
 				$args['posts_per_page'] = $port_terms['number_portf'];
 				unset($port_terms['number_portf']);
@@ -46,7 +42,7 @@
 											)
 										);
 			}
-*/
+
 
 	     
 			$temp = $wp_query;

@@ -47,7 +47,7 @@
 	     
 			$temp = $wp_query;
 			$wp_query = new Wp_Query( $args );
-/*
+
 			RELATED TO CATEGORIES 
 			if( $wp_query->have_posts() ): 
 				echo dt_portf_tax_list(
@@ -58,7 +58,7 @@
 						'ajax'		=>true
 					)
 				);
-*/
+
 			?>
 
 	

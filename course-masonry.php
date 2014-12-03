@@ -53,7 +53,7 @@
 			?>
 				<div id="multicol" class="portfolio_massonry">
 					<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>
-						<?php get_template_part('content-masonry', 'portfolio'); ?>
+						<?php get_template_part('course-masonry', 'portfolio'); ?>
 					<?php endwhile ?>
 				</div>
 				<div id="nav-above" class="navigation portfolio _m">

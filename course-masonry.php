@@ -9,14 +9,26 @@
 	<div id="holder">
 		<?php get_template_part('aside') ?>
 		<div id="content">
+			<?php if( post_password_required() ): ?>
+			
+			<div class="article_box p">
+				<div class="article_t"></div>
+				<div class="article b">
+					<?php echo get_the_password_form(); ?>
+				</div><!-- .article b end -->
+				<div class="article_b"></div>
+			</div>
+			
+			<?php else: ?>
+			
 			<?php
-			$port_terms = get_post_meta( $post->ID, 'division', true );
+			$port_terms = get_post_meta( $post->ID, 'show_portf', true );
 			$args = array( 'post_type'	=>'course' );
 			
 
-			if( isset($port_terms['division']) && $port_terms['division'] ) {
-				$args['posts_per_page'] = $port_terms['division'];
-				unset($port_terms['division']);
+			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
+				$args['posts_per_page'] = $port_terms['number_portf'];
+				unset($port_terms['number_portf']);
 			}
 
 			
@@ -30,7 +42,6 @@
 											)
 										);
 			}
-
 
 	     
 			$temp = $wp_query;
@@ -61,7 +72,10 @@
 					else wp_link_pages();
 					?>
 				</div>
+			<?php // else:?>
+			<?php // endif ?>
 			<?php $wp_query = $temp; ?>
+			<?php endif;// password protectection ?>
 		</div>
 	</div>
 </div>

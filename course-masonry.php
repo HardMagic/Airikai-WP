@@ -21,12 +21,12 @@
 			
 			<?php else: ?>
 			<?php
-			$port_terms = get_post_meta( $post->ID, 'show_portf', true );
+			$port_terms = get_post_meta( $post->ID, 'division', true );
 			$args = array( 'post_type'	=>'course' );
 			
-			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
-				$args['posts_per_page'] = $port_terms['number_portf'];
-				unset($port_terms['number_portf']);
+			if( isset($port_terms['division']) && $port_terms['division'] ) {
+				$args['posts_per_page'] = $port_terms['division'];
+				unset($port_terms['division']);
 			}
 			
 			if( $port_terms ) {

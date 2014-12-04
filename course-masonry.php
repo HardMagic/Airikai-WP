@@ -42,7 +42,7 @@
 			$temp = $wp_query;
 			$wp_query = new Wp_Query( $args );
 			if( $wp_query->have_posts() ): 
-				echo course_tax_list(
+				/* echo course_tax_list(
 					array(
 						'a_class'	=>'button big filter',
 						'c_class'	=>'filter-p filters',
@@ -50,6 +50,7 @@
 						'ajax'		=>true
 					)
 				);
+				*/
 			?>
 				<div id="multicol" class="portfolio_massonry">
 					<?php while( $wp_query->have_posts() ): $wp_query->the_post(); ?>

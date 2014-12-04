@@ -229,7 +229,6 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 				
 				$term_args = array( 	'hide_empty'    =>1,
 										'hierarchical'  =>0,
-										'taxonomy'      =>'division',
 										'pad_counts'    =>false
 								);
 				$default = array(	'a_class'		=>'button filter',
@@ -267,7 +266,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 					$term_args['include'] = current( $o['tax'] );
 				}
 
-				$terms = get_terms( $tax );
+				$terms = get_terms( 'division', $term_args );
 				print_r($terms);
 				if( 1 == count($terms) ) {
 					$out .= '<div class="'. esc_attr($o['c_class']). '" style="display: none !important;">';

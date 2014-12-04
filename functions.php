@@ -227,8 +227,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 				$others_flag = $query->found_posts?true:false;
 				// end other part
 				
-				$term_args = array( 	'type'          =>'course',
-										'hide_empty'    =>1,
+				$term_args = array( 	'hide_empty'    =>1,
 										'hierarchical'  =>0,
 										'taxonomy'      =>'division',
 										'pad_counts'    =>false

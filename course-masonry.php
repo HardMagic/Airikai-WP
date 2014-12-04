@@ -24,9 +24,9 @@
 			$port_terms = get_post_meta( $post->ID, 'division', true );
 			$args = array( 'post_type'	=>'course' );
 			
-			if( isset($port_terms['division']) && $port_terms['division'] ) {
-				$args['posts_per_page'] = $port_terms['division'];
-				unset($port_terms['division']);
+			if( isset($port_terms['number_portf']) && $port_terms['number_portf'] ) {
+				$args['posts_per_page'] = $port_terms['number_portf'];
+				unset($port_terms['number_portf']);
 			}
 			
 			if( $port_terms ) {

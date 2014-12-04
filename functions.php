@@ -204,7 +204,7 @@ function themov_course_id_save_meta_box_data( $post_id ) {
 add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 
 
-	// taxonomy list for courses
+	// taxonomy list
 			function course_tax_list( array $options ) {
 				global $post;
 				
@@ -251,11 +251,11 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 						$glue = '&';
 					}
 					
-					if( isset($_GET['division']) ){
-						$cur_cat = trim( (string) $_GET['division'] );
+					if( isset($_GET['portfolio_category']) ){
+						$cur_cat = trim( (string) $_GET['portfolio_category'] );
 					}
-					$href_plus = $href. $glue. 'division=';
-					$href_other = $href. $glue. 'division=none';
+					$href_plus = $href. $glue. 'portfolio_category=';
+					$href_other = $href. $glue. 'portfolio_category=none';
 				}else{
 					$href_plus = '#';
 					$href = '#all';
@@ -268,7 +268,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 					$term_args['include'] = current( $o['tax'] );
 				}
 
-				$terms = get_categories( $term_args );
+				$terms = get_terms( $term_args );
 				if( 1 == count($terms) ) {
 					$out .= '<div class="'. esc_attr($o['c_class']). '" style="display: none !important;">';
 					$out .= '<a href="'. esc_attr( $href_plus. $terms[0]->slug ). '" class="'. esc_attr($o['a_class']). ' act">';

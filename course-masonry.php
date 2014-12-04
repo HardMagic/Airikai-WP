@@ -32,7 +32,7 @@
 			if( $port_terms ) {
 				$args['tax_query'] = array(	
 											array(
-												'taxonomy'=>'portfolio-category',
+												'taxonomy'=>'division',
 												'field'=>'id',
 												'terms'=>current( $port_terms ),
 												'operator' => ( 'only' == key($port_terms) )?'IN':'NOT IN',
@@ -42,7 +42,7 @@
 			$temp = $wp_query;
 			$wp_query = new Wp_Query( $args );
 			if( $wp_query->have_posts() ): 
-				echo dt_portf_tax_list(
+				echo course_tax_list(
 					array(
 						'a_class'	=>'button big filter',
 						'c_class'	=>'filter-p filters',

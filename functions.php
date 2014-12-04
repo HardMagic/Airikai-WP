@@ -202,3 +202,100 @@ function themov_course_id_save_meta_box_data( $post_id ) {
 	update_post_meta( $post_id, 'themov_link', $my_data );
 }
 add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
+
+
+	// taxonomy list for courses
+			function course_tax_list( array $options ) {
+				global $post;
+				
+				// for other button
+				$tax = get_terms( 'division', array('fields' =>'ids') );
+				$query = new Wp_Query(
+					array(	
+						'post_type'		=>'course',
+						'tax_query'		=>array(
+							array(
+								'taxonomy'	=>'division',
+								'field'		=>'id',
+								'terms'		=>$tax,
+								'operator'	=>'NOT IN'
+							)
+						),
+						'posts_per_page'	=>1
+					)
+				);
+				$others_flag = $query->found_posts?true:false;
+				// end other part
+				
+				$term_args = array( 	'type'          =>'course',
+										'hide_empty'    =>1,
+										'hierarchical'  =>0,
+										'taxonomy'      =>'division',
+										'pad_counts'    =>false
+								);
+				$default = array(	'a_class'		=>'button filter',
+									'c_class'		=>'filters',
+									'ajax'			=>false,
+									'tax'			=>null
+								);
+				$o = array_merge( $default, $options );
+				$tax_key = $o['tax']?key( $o['tax'] ):$o['tax'];
+				$cur_cat = $out = $href = $href_plus = '';
+								
+				if( !$o['ajax'] ){
+					// set glue element for href
+					$href = get_permalink();
+					if ( get_option('permalink_structure') != '' ){
+						$glue = '?';
+					}else{
+						$glue = '&';
+					}
+					
+					if( isset($_GET['division']) ){
+						$cur_cat = trim( (string) $_GET['division'] );
+					}
+					$href_plus = $href. $glue. 'division=';
+					$href_other = $href. $glue. 'division=none';
+				}else{
+					$href_plus = '#';
+					$href = '#all';
+					$href_other = '#none';
+				}
+				
+				if( 'except' == $tax_key ) {
+					$term_args['exclude'] = current( $o['tax'] );
+				}elseif( 'only' == $tax_key ){
+					$term_args['include'] = current( $o['tax'] );
+				}
+
+				$terms = get_categories( $term_args );
+				if( 1 == count($terms) ) {
+					$out .= '<div class="'. esc_attr($o['c_class']). '" style="display: none !important;">';
+					$out .= '<a href="'. esc_attr( $href_plus. $terms[0]->slug ). '" class="'. esc_attr($o['a_class']). ' act">';
+                    $out .= '</a>';
+                    $out .= '</div>';
+                    return $out;
+                }
+
+				if( $terms ){
+					$out .= '<div class="'. esc_attr($o['c_class']). '">';
+					$out .= '<a href="'. esc_attr( $href ). '" class="'. esc_attr($o['a_class']). ($cur_cat?'':' act'). '">';
+					$out .= '<span class="but-r"><span>'. __( 'View all', 'dt'). '</span></span>';
+					$out .= '</a>';
+					foreach( $terms as $term ){
+						$act = '';
+						if( $cur_cat == $term->slug ) $act = ' act';
+						$out .= '<a href="'. esc_attr( $href_plus. $term->slug ). '" class="'. esc_attr($o['a_class']). $act. '">';
+						$out .= '<span class="but-r"><span>'. $term->name. '</span></span>';
+						$out .= '</a>';
+					}
+					
+					if ( $others_flag ) {
+						$out .= '<a href="'. esc_attr( $href_other ). '" class="'. esc_attr($o['a_class']). ('none' == $cur_cat?' act':''). '">';
+						$out .= '<span class="but-r"><span>'. __( 'Other', 'dt'). '</span></span>';
+						$out .= '</a>';
+					}
+					$out .= '</div>';
+				}
+				return $out;
+			}

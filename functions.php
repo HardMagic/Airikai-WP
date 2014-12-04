@@ -300,4 +300,4 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 				return $out;
 			}
 			
-add_action('init', 'course_tax_list');
+			

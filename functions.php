@@ -203,7 +203,7 @@ function themov_course_id_save_meta_box_data( $post_id ) {
 }
 add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 
-
+add_action('init', 'course_tax_list');
 	// taxonomy list
 			function course_tax_list( array $options ) {
 				global $post;

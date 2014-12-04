@@ -267,7 +267,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 					$term_args['include'] = current( $o['tax'] );
 				}
 
-				$terms = get_terms( $term_args );
+				$terms = get_terms( $tax );
 				print_r($terms);
 				if( 1 == count($terms) ) {
 					$out .= '<div class="'. esc_attr($o['c_class']). '" style="display: none !important;">';
@@ -299,5 +299,3 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 				}
 				return $out;
 			}
-			
-			

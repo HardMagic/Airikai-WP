@@ -268,7 +268,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 					$term_args['include'] = current( $o['tax'] );
 				}
 
-				$terms = get_terms( $tax );
+				$terms = get_categories( $term_args );
 				if( 1 == count($terms) ) {
 					$out .= '<div class="'. esc_attr($o['c_class']). '" style="display: none !important;">';
 					$out .= '<a href="'. esc_attr( $href_plus. $terms[0]->slug ). '" class="'. esc_attr($o['a_class']). ' act">';

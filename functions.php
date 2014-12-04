@@ -210,6 +210,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 				
 				// for other button
 				$tax = get_terms( 'division', array('fields' =>'ids') );
+				print_r($tax);
 				$query = new Wp_Query(
 					array(	
 						'post_type'		=>'course',
@@ -227,8 +228,10 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 				$others_flag = $query->found_posts?true:false;
 				// end other part
 				
-				$term_args = array( 	'hide_empty'    =>1,
+				$term_args = array( 	'type'          =>'course',
+										'hide_empty'    =>1,
 										'hierarchical'  =>0,
+										'taxonomy'      =>'division',
 										'pad_counts'    =>false
 								);
 				$default = array(	'a_class'		=>'button filter',
@@ -266,8 +269,7 @@ add_action( 'save_post', 'themov_course_id_save_meta_box_data' );
 					$term_args['include'] = current( $o['tax'] );
 				}
 
-				$terms = get_terms( 'division', 'orderby=count&hide_empty=0' );
-				print_r($terms);
+				$terms = get_categories( $term_args );
 				if( 1 == count($terms) ) {
 					$out .= '<div class="'. esc_attr($o['c_class']). '" style="display: none !important;">';
 					$out .= '<a href="'. esc_attr( $href_plus. $terms[0]->slug ). '" class="'. esc_attr($o['a_class']). ' act">';
